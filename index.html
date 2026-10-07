@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My 3D Business</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#050505;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* 3D Background */
+body:before{
+  content:"";
+  position:fixed;
+  width:400px;
+  height:400px;
+  background:linear-gradient(45deg,#6a00ff,#00d4ff);
+  filter:blur(120px);
+  opacity:.35;
+  top:-100px;
+  left:-100px;
+  z-index:-1;
+}
+
+body:after{
+  content:"";
+  position:fixed;
+  width:350px;
+  height:350px;
+  background:#ff0080;
+  filter:blur(130px);
+  opacity:.2;
+  bottom:-100px;
+  right:-100px;
+  z-index:-1;
+}
+
+/* Navigation */
+nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #222;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+  background:linear-gradient(90deg,#00eaff,#9d4edd);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:18px;
+  font-size:14px;
+}
+
+/* Hero */
+.hero{
+  min-height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px 20px;
+  perspective:1000px;
+}
+
+.hero h1{
+  font-size:clamp(45px,12vw,90px);
+  line-height:1;
+  margin-bottom:25px;
+  text-shadow:0 20px 40px rgba(0,0,0,.7);
+  transform:rotateX(8deg);
+}
+
+.gradient{
+  background:linear-gradient(90deg,#00eaff,#8a2be2,#ff00aa);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:650px;
+  color:#bbb;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:16px 30px;
+  border-radius:50px;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  background:linear-gradient(135deg,#6a00ff,#00bfff);
+  box-shadow:0 15px 35px rgba(0,150,255,.3);
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-6px) scale(1.04);
+}
+
+/* Services */
+section{
+  padding:80px 7%;
+}
+
+.title{
+  text-align:center;
+  font-size:42px;
+  margin-bottom:50px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:30px;
+  perspective:1000px;
+}
+
+.card{
+  padding:35px 25px;
+  min-height:230px;
+  border-radius:25px;
+  background:linear-gradient(145deg,#151515,#080808);
+  border:1px solid #292929;
+  box-shadow:15px 20px 40px rgba(0,0,0,.6);
+  transition:.4s;
+  transform-style:preserve-3d;
+}
+
+.card:hover{
+  transform:rotateY(8deg) rotateX(5deg) translateY(-12px);
+  border-color:#6a00ff;
+}
+
+.icon{
+  font-size:45px;
+  margin-bottom:20px;
+}
+
+.card h3{
+  font-size:22px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#999;
+  line-height:1.6;
+}
+
+/* About */
+.about{
+  text-align:center;
+  max-width:800px;
+  margin:auto;
+}
+
+.about p{
+  color:#aaa;
+  line-height:1.8;
+  font-size:17px;
+}
+
+/* Contact */
+.contact{
+  text-align:center;
+}
+
+.contact-box{
+  max-width:600px;
+  margin:auto;
+  padding:40px;
+  border-radius:30px;
+  background:#101010;
+  border:1px solid #292929;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#666;
+  border-top:1px solid #222;
+}
+
+/* Mobile */
+@media(max-width:600px){
+  nav{
+    padding:15px 5%;
+  }
+
+  nav a{
+    margin-left:8px;
+    font-size:12px;
+  }
+
+  .hero{
+    min-height:80vh;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  section{
+    padding:60px 5%;
+  }
+
+  .title{
+    font-size:34px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">MY BUSINESS</div>
+
+  <div>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <h1>
+    Build Your<br>
+    <span class="gradient">Digital Future</span>
+  </h1>
+
+  <p>
+    Modern digital services for businesses, creators and entrepreneurs.
+    Creative. Fast. Professional.
+  </p>
+
+  <a class="btn" href="#services">
+    Explore Services →
+  </a>
+
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+
+  <h2 class="title">Our Services</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">🎬</div>
+      <h3>AI Video Editing</h3>
+      <p>
+        Professional AI-powered video editing for social media,
+        business promotions and creators.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h3>Website Making</h3>
+      <p>
+        Modern and responsive websites designed to make your
+        business look professional online.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">☕</div>
+      <h3>Coffee Printer</h3>
+      <p>
+        Coffee printer sales and solutions for cafes,
+        businesses and creative printing needs.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚀</div>
+      <h3>Business Solutions</h3>
+      <p>
+        Digital solutions that help businesses grow,
+        promote and build their online presence.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+
+  <div class="about">
+
+    <h2 class="title">About Us</h2>
+
+    <p>
+      We help businesses turn their ideas into modern digital
+      experiences. From websites and AI video editing to
+      innovative business solutions, we focus on quality,
+      creativity and professional results.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+  <div class="contact">
+
+    <h2 class="title">Let's Work Together</h2>
+
+    <div class="contact-box">
+
+      <p style="color:#aaa;line-height:1.7;">
+        Have a project or business idea?
+        Contact us and let's create something amazing.
+      </p>
+
+      <a class="btn"
+         href="https://wa.me/91XXXXXXXXXX">
+         WhatsApp Us
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 My Business. All Rights Reserved.
+</footer>
+
+</body>
+</html>
